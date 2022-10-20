@@ -16,7 +16,7 @@ class Stack02Test {
 
     @Test
     @DisplayName("test 시작")
-    void push(){
+    void pushAndPop(){
         Stack02 st = new Stack02();
         st.push(10);
         st.push(20);
@@ -24,6 +24,7 @@ class Stack02Test {
 
         assertEquals(20,st.peek());
         assertEquals(20,st.pop());
+        assertEquals(false,st.isEmpty());
         assertEquals(10,st.pop());;
         assertEquals(true,st.isEmpty());
     }

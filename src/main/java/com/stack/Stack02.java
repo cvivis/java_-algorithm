@@ -23,11 +23,18 @@ public class Stack02 {
         arr[top] = value;
         top++;
     }
-    public Integer pop(){
+    public Integer peek(){
+        if(isEmpty()){
+            throw new RuntimeException("스택이 비었습니다.");
+        }
+
         return arr[top-1];
     }
 
-    public Integer peek(){
+    public Integer pop(){
+        if(isEmpty()){
+            throw new RuntimeException("스택이 비었습니다.");
+        }
         int value = arr[top-1];
         arr[top-1] = null;
         top--;
@@ -35,7 +42,7 @@ public class Stack02 {
     }
 
     public boolean isEmpty() {
-        if(arr.length == 0){
+        if(top == 0){
             return true;
         }else{
             return false;

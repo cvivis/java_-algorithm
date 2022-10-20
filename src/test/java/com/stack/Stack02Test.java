@@ -4,6 +4,8 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.EmptyStackException;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class Stack02Test {
@@ -27,6 +29,14 @@ class Stack02Test {
         assertEquals(false,st.isEmpty());
         assertEquals(10,st.pop());;
         assertEquals(true,st.isEmpty());
+    }
+
+    @Test
+    void exception(){
+        Stack02 st = new Stack02();
+        assertThrows(RuntimeException.class, ()->{
+            st.pop();
+        });
     }
 
 }

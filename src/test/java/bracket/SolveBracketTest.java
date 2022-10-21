@@ -12,11 +12,11 @@ class SolveBracketTest {
     void bracket(){
         //solve_bracket_return_boolean
         SolveBracket solveBracket = new SolveBracket();
-        assertTrue(solveBracket.solution("()()"));
-        assertTrue(solveBracket.solution("(())()"));
-        assertFalse(solveBracket.solution(")()("));
-        assertFalse(solveBracket.solution("(()("));
-        assertFalse(solveBracket.solution( "((((((((((((((((((((((((((((((((((((((((((((((((()))))))))))))))))))))))))))))))))))))))))))))))))))))"
+        assertTrue(solveBracket.solution3("()()"));
+        assertTrue(solveBracket.solution3("(())()"));
+        assertFalse(solveBracket.solution3(")()("));
+        assertFalse(solveBracket.solution3("(()("));
+        assertFalse(solveBracket.solution3( "((((((((((((((((((((((((((((((((((((((((((((((((()))))))))))))))))))))))))))))))))))))))))))))))))))))"
         ));
 
     }

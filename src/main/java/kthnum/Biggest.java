@@ -18,7 +18,7 @@ public class Biggest {
         for (int i = strNums.length-1; i >=0 ; i--) {
             answer += strNums[i];
         }
-        //테스트 11번 틀린 이유 
+        //테스트 11번 틀린 이유
         if(strNums[strNums.length-1].equals("0")){
             answer = "0";
         }

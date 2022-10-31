@@ -12,7 +12,7 @@ public class PhoneBook {
         for (int i = 0; i < phone_book.length; i++) {
             set.add(phone_book[i]);
         }
-        Iterator<String> it = set.iterator();
+//        Iterator<String> it = set.iterator();
         int len = 0;
 
         for (int i = 0; i < set.size(); i++) {

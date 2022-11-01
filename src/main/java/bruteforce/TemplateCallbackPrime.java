@@ -11,6 +11,7 @@ public class TemplateCallbackPrime {
     boolean isPrime(int num, Range range){
         for (int i = 2; range.range(i,num); i++) {
             if(num % i == 0)return false;
+            System.out.println(i);
         }
         return true;
     }
@@ -21,12 +22,9 @@ public class TemplateCallbackPrime {
 
     public static void main(String[] args) {
         TemplateCallbackPrime templateCallbackPrime = new TemplateCallbackPrime();
-        boolean r = templateCallbackPrime.isPrime(17, new Range() {
-            @Override
-            public boolean range(int a, int b) {
-                return a * a <= b;
-            }
-        });
-        System.out.println(r);
+
+        System.out.println(templateCallbackPrime.isPrime(17, (a,b)-> a*a<=b));
+        System.out.println(templateCallbackPrime.isPrime(17, (a,b)-> a <= b/2));
+        System.out.println(templateCallbackPrime.isPrime(17, (a,b)-> a < b));
     }
 }

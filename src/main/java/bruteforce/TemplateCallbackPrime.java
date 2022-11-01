@@ -2,12 +2,14 @@ package bruteforce;
 
 
 interface Range{
-    double range(double range);
+    boolean range(int a, int b);
 }
 public class TemplateCallbackPrime {
 
-    boolean isPrime(int num){
-        for (int i = 2; someOperation(i,num); i++) {
+
+
+    boolean isPrime(int num, Range range){
+        for (int i = 2; range.range(i,num); i++) {
             if(num % i == 0)return false;
         }
         return true;
@@ -19,7 +21,12 @@ public class TemplateCallbackPrime {
 
     public static void main(String[] args) {
         TemplateCallbackPrime templateCallbackPrime = new TemplateCallbackPrime();
-        boolean r = templateCallbackPrime.isPrime(17);
+        boolean r = templateCallbackPrime.isPrime(17, new Range() {
+            @Override
+            public boolean range(int a, int b) {
+                return a * a <= b;
+            }
+        });
         System.out.println(r);
     }
 }

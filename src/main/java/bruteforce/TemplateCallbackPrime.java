@@ -4,7 +4,7 @@ package bruteforce;
 interface Range{
     boolean range(int a, int b);
 }
-public class TemplateCallbackPrime {
+public class TemplateCallbackPrime { // 함수안에서 함수(인터페이스로 선언)호출하는 형태
 
 
 

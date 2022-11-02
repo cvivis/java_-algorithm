@@ -26,26 +26,30 @@ public class PrimeFind {
     }
 
         public List<Integer> eratos(int n){
-            int[] arr = IntStream.rangeClosed(1, n+1).toArray();
-            for (int i = 0; i < arr.length; i++) {
-                for (int j = 2; j < Math.sqrt(n); j++) {
-                    if(arr[i]%j==0&&arr[i]/j>1){
-                        arr[i] = 0;
+            int[] arr = IntStream.rangeClosed(1, n).toArray();
+            List<Integer> listN = new ArrayList<>();
+            for (int i = 2; i <= n; i++) {
+                listN.add(i);
+            }
+//            System.out.println(listN);
+//            System.out.println(listN.size());
+//            System.out.println(listN.get(8));
+            // remove를 하면 nums.size가 계속 바뀌기 때문에 가장바깥쪽의 for문을 사용하면 index오류가 난다.
+            for (int i = 2; i < Math.sqrt(n); i++) {
+                for (int j = 0; j <= listN.size(); j++) {
+                    int num = listN.get(j);
+                    System.out.println("num: "+num);
+                    if(num%i==0&&num/i>1){
+                        listN.remove(j);
                     }
                 }
             }
-            List<Integer> list = new ArrayList<>();
-            for (int i = 1; i < arr.length; i++) {
-                if(arr[i] != 0){
-                    list.add(arr[i]);
-                }
-            }
-            return list;
+            return listN;
         }
 
     public static void main(String[] args) {
         PrimeFind primeFind = new PrimeFind();
         System.out.println(primeFind.solution(13));
-        System.out.println(primeFind.eratos(50));
+        System.out.println(primeFind.eratos(10));
     }
 }

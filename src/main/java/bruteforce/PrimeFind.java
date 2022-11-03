@@ -1,8 +1,6 @@
 package bruteforce;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 import java.util.stream.IntStream;
 
 public class PrimeFind {
@@ -29,14 +27,30 @@ public class PrimeFind {
             int[] arr = IntStream.rangeClosed(2, n).toArray();
             boolean[] checks = new boolean[n-1];
             Arrays.fill(checks,true);
-            // remove를 하면 nums.size가 계속 바뀌기 때문에 가장바깥쪽의 for문을 사용하면 index오류가 난다.
+            
+            Map<Integer,Boolean> nums = new HashMap<>();
+            int index = 2;
             for (int i = 2; i < Math.sqrt(n); i++) {
                 for (int j = 0; j < arr.length; j++) {
-                    if(arr[j]%i==0&&arr[j]/i>1){
-                        checks[j] = false;
-                    }
+//                    if(arr[j]%i==0&&arr[j]/i>1){
+//                        checks[j] = false;
+//                    }
                 }
+                System.out.println("multipleOf : "+ i); // 에라토스 체 실습
+                System.out.println("ckecks index" + index);
+                index+=2;
             }
+            for (int i = 1; i <= n; i++) {
+                nums.put(i,false);
+            }
+//            for (int i = 2; i < Math.sqrt(n); i++) {
+//                for (int j = 0; j < arr.length; j++) {
+//                    if(arr[j]%i==0&&arr[j]/i>1){
+//                        checks[j] = false;
+//                    }
+//                }
+//            }
+
             int count = 0;
             for (int i = 0; i < checks.length; i++) {
                 if(checks[i] == true){
@@ -48,7 +62,7 @@ public class PrimeFind {
 
     public static void main(String[] args) {
         PrimeFind primeFind = new PrimeFind();
-        System.out.println(primeFind.solution(10));
-        System.out.println(primeFind.eratos(10));
+        System.out.println(primeFind.solution(100));
+        System.out.println(primeFind.eratos(100));
     }
 }

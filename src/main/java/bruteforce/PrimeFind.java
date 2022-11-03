@@ -16,53 +16,37 @@ public class PrimeFind {
 
             }
             if (prime == true) {
-                System.out.println("prime : " + i);
+//                System.out.println("prime : " + i);
                 count++;
             }
         }
         return count;
     }
 
-        public int eratos(int n){
-            int[] arr = IntStream.rangeClosed(2, n).toArray();
-            boolean[] checks = new boolean[n-1];
-            Arrays.fill(checks,true);
-            
-            Map<Integer,Boolean> nums = new HashMap<>();
-            int index = 2;
-            for (int i = 2; i < Math.sqrt(n); i++) {
-                for (int j = 0; j < arr.length; j++) {
-//                    if(arr[j]%i==0&&arr[j]/i>1){
-//                        checks[j] = false;
-//                    }
-                }
-                System.out.println("multipleOf : "+ i); // 에라토스 체 실습
-                System.out.println("ckecks index" + index);
-                index+=2;
-            }
-            for (int i = 1; i <= n; i++) {
-                nums.put(i,false);
-            }
-//            for (int i = 2; i < Math.sqrt(n); i++) {
-//                for (int j = 0; j < arr.length; j++) {
-//                    if(arr[j]%i==0&&arr[j]/i>1){
-//                        checks[j] = false;
-//                    }
-//                }
-//            }
+    public int eratos(int n ){
+        int[] arr = IntStream.rangeClosed(2, n).toArray();
+        boolean[] checks = new boolean[arr.length];
+        Arrays.fill(checks,true);
 
-            int count = 0;
-            for (int i = 0; i < checks.length; i++) {
-                if(checks[i] == true){
-                   count++;
-                }
+
+        int index = 0;
+        for (int i = 2; i <= Math.sqrt(n); i++) {
+            for(int j = index+2; j < arr.length; j+=i) {
+                checks[j] = false;
             }
-            return count;
+            index+=2;
         }
+        int count = 0;
+        for (int i = 0; i < checks.length; i++) {
+            if(checks[i]==true) count++;
+        }
+
+        return count;
+    }
 
     public static void main(String[] args) {
         PrimeFind primeFind = new PrimeFind();
-        System.out.println(primeFind.solution(100));
-        System.out.println(primeFind.eratos(100));
+        System.out.println(primeFind.solution(5));
+        System.out.println(primeFind.eratos(5));
     }
 }

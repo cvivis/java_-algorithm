@@ -23,14 +23,13 @@ public class PrimeFind {
         return count;
     }
 
-    public int eratos(int n ){
+    public int eratos1(int n ){
         int[] arr = IntStream.rangeClosed(2, n).toArray();
         boolean[] checks = new boolean[arr.length];
         Arrays.fill(checks,true);
 
-
         int index = 0;
-        for (int i = 2; i <= Math.sqrt(n); i++) {
+        for (int i = 2; i <= Math.sqrt(n); i++) { // n의 배수 
             for(int j = index+2; j < arr.length; j+=i) {
                 checks[j] = false;
             }
@@ -42,11 +41,13 @@ public class PrimeFind {
         }
 
         return count;
+
+
     }
 
     public static void main(String[] args) {
         PrimeFind primeFind = new PrimeFind();
         System.out.println(primeFind.solution(5));
-        System.out.println(primeFind.eratos(5));
+//        System.out.println(primeFind.eratos(5));
     }
 }

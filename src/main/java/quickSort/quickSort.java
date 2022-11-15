@@ -8,7 +8,7 @@ public class quickSort {
 
     // 재귀
     public List<Integer> sort(List<Integer> arr){
-//        if(arr.size() <= 1)return arr;
+        if(arr.size() <= 1)return arr;
         List<Integer> low = new ArrayList<>();
         List<Integer> middle = new ArrayList<>();
         List<Integer> high = new ArrayList<>();
@@ -27,17 +27,12 @@ public class quickSort {
         List<Integer> list = new ArrayList<>();
         List<Integer> lowList = new ArrayList<>();
         List<Integer> highList = new ArrayList<>();
-        if(low.size()>1){
-            lowList = sort(low);
-        }
-        if(high.size()>1){
-            highList = sort(high);
-        }
-
-        list.addAll(lowList);
+        low = sort(low);
+        high = sort(high);
+        list.addAll(low);
         list.addAll(middle);
-        list.addAll(highList);
-         
+        list.addAll(high);
+
         return list ;
     }
 

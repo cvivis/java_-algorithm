@@ -1,4 +1,4 @@
-package quickSort;
+package sort.quickSort;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -50,21 +50,31 @@ public class quickSort {
      * 기준피봇보다 작으면 바꾸는 대상이 아니기에 low피봇의 인덱스를 +1 high피봇은 대상이 피봇보다 크면 바꾸지 않고 -1
      **/
 
-    public int[] sort2(int[] arr) {
-        int pivot = arr.length / 2;
-        int lowIdx = 0;
-        int highIdx = arr.length - 1;
+    public int[] sort2(int[] arr,int low, int high) {
+        System.out.println("low: "+ low);
+        System.out.println("high: "+ high);
+        if(high-low<=0)return arr; // 사이즈가 1이면 종료
+        int pivot = (low + high+1)/2;
+        int lowIdx = low;
+        int highIdx = high; // size - 1
         while (lowIdx <= highIdx) {
             while (arr[lowIdx] < arr[pivot]) lowIdx++;
             while (arr[highIdx] > arr[pivot]) highIdx--;
+//            System.out.println("low: "+ lowIdx);
+//            System.out.println("high: "+ highIdx);
             swap(arr, lowIdx, highIdx);
             lowIdx++;
             highIdx--;
-            System.out.println("low: "+ lowIdx);
-            System.out.println("high: "+ highIdx);
+            System.out.println(Arrays.toString(arr));
         }
-        swap(arr, lowIdx, highIdx);
+
+        sort2(arr,low,highIdx);
+        sort2(arr,lowIdx,high);
         return arr;
+    }
+
+    public int[] partition(int[] arr,int a, int b){
+        return Arrays.copyOfRange(arr,a,b);
     }
         public static void main (String[]args){
             int[] arr = {20, 18, 5, 19, 40, 50, 5, 25};
@@ -74,7 +84,7 @@ public class quickSort {
             }
             quickSort q = new quickSort();
 //        System.out.println( q.sort(list));
-            System.out.println(Arrays.toString(q.sort2(arr)));
+            System.out.println(Arrays.toString(q.sort2(arr,0,arr.length-1)));
 
         }
     }

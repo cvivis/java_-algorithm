@@ -9,8 +9,7 @@ import java.util.List;
 public class ListSum {
     public static int sumAll(List<Integer> list) {
         if(list.size()==0)return 0;
-        int add = list.get(list.size()-1);
-        list.remove(list.size()-1);
+        int add = list.remove(list.size()-1);
         return sumAll(list) + add;
     }
     public static void main(String[] args) throws IOException {

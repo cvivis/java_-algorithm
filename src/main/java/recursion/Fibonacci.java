@@ -11,6 +11,7 @@ public class Fibonacci {
         int N = Integer.parseInt(br.readLine()); // N번째 수 출력하기
 //        System.out.println(fibonacci.find(N,1,1));
         System.out.println(fibonacci.Nfind(N));
+        System.out.println(fibonacci.noFibo(N));
     }
 //    private int find(int N,int prev,int now) {
 //        if(N<=2) return now;
@@ -19,5 +20,21 @@ public class Fibonacci {
     private int Nfind(int N) {
         if(N<=2) return 1;
         return Nfind(N-2)+Nfind(N-1);
+    }
+
+    public int noFibo(int N){
+        int first = 1;
+        int second = 1;
+        int result = 1;
+        while(true){
+            if(N<=2){
+                break;
+            }
+            result = first + second;
+            N--;
+            first = second;
+            second = result;
+        }
+        return result;
     }
 }

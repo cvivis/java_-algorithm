@@ -12,7 +12,7 @@ public class Up1853 {
         System.out.println(up1851.sumAll(num));
     }
 
-    
+
 
     private int sumAll(int num) {
         if(num <= 0)return 0;

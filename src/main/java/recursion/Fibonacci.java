@@ -13,10 +13,6 @@ public class Fibonacci {
         System.out.println(fibonacci.Nfind(N));
         System.out.println(fibonacci.noFibo(N));
     }
-//    private int find(int N,int prev,int now) {
-//        if(N<=2) return now;
-//        return find(N-1,now,prev+now);
-//    }
     private int Nfind(int N) {
         if(N<=2) return 1;
         return Nfind(N-2)+Nfind(N-1);

@@ -42,8 +42,8 @@ public class CombinationOfAlphabet {
             System.out.println(prefix);
             return;
         }
-        for (char c = 'A'; c <= 'Z' ; c++) {
-            printAllAlphabet(prefix + c,num);
+        for (int i = 0; i < alphabet.length() ; i++) {
+            printAllAlphabet(prefix + alphabet.charAt(i),num);
         }
     }
 }

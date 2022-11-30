@@ -1,8 +1,6 @@
 package sort.radixSort;
 
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.TreeSet;
+import java.util.*;
 
 public class radixSort {
     public static void main(String[] args) {
@@ -33,9 +31,14 @@ public class radixSort {
     }
 
     public static int[] sort2(int[] arr){
-        for (int i = 0; i < arr.length; i++) {
+        Queue<Integer>[] queueArr = new Queue[10];
+        for (int i = 0; i < 10; i++) {
+            queueArr[i] = new LinkedList<>();
         }
-        System.out.println(Arrays.toString(getDigits(arr)));
+        int[] digits = getDigits(arr);
+        for (int i = 0; i < arr.length; i++) {
+            // 강의 코드 보고 digits 중복 허용해서 해당하는 자릿수 큐배열에 넣기로 해보기
+        }
         return arr;
     }
     public static int[] getDigits(int[] arr){

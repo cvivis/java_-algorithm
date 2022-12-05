@@ -9,7 +9,7 @@ public class TemplarWeapon {
     public static int solution(int number, int limit, int power) {
         int answer = 0;
 
-        for (int i = 2; i <= number; i++) { // 2부터 확인 1의 약수는 1 
+        for (int i = 2; i <= number; i++) { // 2부터 확인 1의 약수는 1
             int divisorNum = 0;
             Set<Integer> set = new HashSet<>();
             for (int j = 1; j*j <= i; j++) { // 제곱근 만큼의 횟수로 확인

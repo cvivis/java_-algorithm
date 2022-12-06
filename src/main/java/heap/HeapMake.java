@@ -12,12 +12,12 @@ public class HeapMake {
         int[] arr3 = {4,8,5,7,3,2,9,6,7};
         int[] arr4 = {9,8,4,7,3,2,5,6,1};
 
-        int[] arr5 = {2,3,5,1,4};
-        for (int i = (arr5.length-2)/2; i >=0; i--) {
-//                System.out.println(Arrays.toString(makeHeap(arr4,i)));
-            makeHeap(arr5,i,arr5.length);
-        }
-        System.out.println(Arrays.toString(arr5));
+//        int[] arr5 = {2,3,5,1,4};
+//        for (int i = (arr5.length-2)/2; i >=0; i--) {
+////                System.out.println(Arrays.toString(makeHeap(arr4,i)));
+//            makeHeap(arr5,i,arr5.length);
+//        }
+//        System.out.println(Arrays.toString(arr5));
 
 
         int len = arr4.length-1;
@@ -27,20 +27,19 @@ public class HeapMake {
             System.out.println("arrTemp: "+arrTemp);
             for (int i = (arrTemp)/2; i >=0; i--) {
 //                System.out.println(Arrays.toString(makeHeap(arr4,i)));
-                makeHeap(arr4,i,arrTemp);
+                makeHeap(arr4,i,len);
             }
-            System.out.println(Arrays.toString(arr4));
             swap(arr4,0,len);
             len--;
             arrTemp--;
             System.out.println(Arrays.toString(arr4));
         }
-        System.out.println(Arrays.toString(arr4));
-
-
-        System.out.println("------ ");
-
-        System.out.println(Arrays.toString(whileHeap(arr3)));
+        System.out.println("정렬 결과: "+Arrays.toString(arr4));
+//
+//
+//        System.out.println("------ ");
+//
+//        System.out.println(Arrays.toString(whileHeap(arr3)));
 //        System.out.println(Arrays.toString(makeHeap(arr,3)));
     }
 
@@ -51,18 +50,17 @@ public class HeapMake {
         int rightIdx = parentIdx * 2 + 2; // 오른쪽 노드
         int greaterIdx = parentIdx; // 클때 바꾸기 위한 idx
 
-        if(leftIdx<arrSize && arr[leftIdx] > arr[parentIdx]) { // 뿌리 노드의 leftIdx는 없기 때문에 length랑 비교해 연산 제어
+        if(leftIdx<arrSize && arr[leftIdx] > arr[greaterIdx]) { // 뿌리 노드의 leftIdx는 없기 때문에 length랑 비교해 연산 제어
             greaterIdx = leftIdx;
         }
-        else if(rightIdx<arrSize && arr[rightIdx] > arr[parentIdx]){ // 자식 노드 값이 커지면 부모노드랑 바꾸기
+        if(rightIdx<arrSize && arr[rightIdx] > arr[greaterIdx]){ // 자식 노드 값이 커지면 부모노드랑 바꾸기
             greaterIdx = rightIdx; // 바꾸기 위한 idx, 전체 노드 순서대로 확인하기 위해 부모노드는 바뀌어선 안됨.
         }
+        System.out.println(Arrays.toString(arr));
         if(greaterIdx != parentIdx){
             swap(arr,greaterIdx,parentIdx);
             makeHeap(arr,greaterIdx,arrSize);
         }
-
-
         return arr;
     }
     /** while 문 작성 실패.... <- 한 방향으로만 힙을 만듬. 중간 노드 에서 바꾸어 줬을때 그 노드를 루트노드로 다시 아래노드와 비교, 확인이 되어야 하는데

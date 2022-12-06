@@ -48,25 +48,24 @@ public class HeapMake {
 //        if(parentIdx>= (int)Math.sqrt(arrSize))return arr;
         int leftIdx = parentIdx * 2 + 1; // 왼쪽노드
         int rightIdx = parentIdx * 2 + 2; // 오른쪽 노드
-        int greaterIdx = parentIdx; // 클때 바꾸기 위한 idx
+        int greaterIdx = parentIdx; // 클 때 바꾸기 위한 idx
 
         if(leftIdx<arrSize && arr[leftIdx] > arr[greaterIdx]) { // 뿌리 노드의 leftIdx는 없기 때문에 length랑 비교해 연산 제어
-            greaterIdx = leftIdx;
+            greaterIdx = leftIdx; // 바꾸기 위한 idx, 전체 노드 순서대로 확인하기 위해 부모노드는 바뀌어선 안됨.
         }
-        if(rightIdx<arrSize && arr[rightIdx] > arr[greaterIdx]){ // 자식 노드 값이 커지면 부모노드랑 바꾸기
-            greaterIdx = rightIdx; // 바꾸기 위한 idx, 전체 노드 순서대로 확인하기 위해 부모노드는 바뀌어선 안됨.
+        if(rightIdx<arrSize && arr[rightIdx] > arr[greaterIdx]){ // 자식 노드 값이 커지면 부모노드랑 바꾸기. 대소 비교가 레프트랑도 되어야 하기에 if로 써주기
+            greaterIdx = rightIdx;
         }
         System.out.println(Arrays.toString(arr));
-        if(greaterIdx != parentIdx){
+        if(greaterIdx != parentIdx){ // 더 큰 값이 자식에 있다는 의미
             swap(arr,greaterIdx,parentIdx);
-            makeHeap(arr,greaterIdx,arrSize);
+            makeHeap(arr,greaterIdx,arrSize); // 바꾸고 나서도 하위 트리의 대소관계를 비교해야함
         }
         return arr;
     }
-    /** while 문 작성 실패.... <- 한 방향으로만 힙을 만듬. 중간 노드 에서 바꾸어 줬을때 그 노드를 루트노드로 다시 아래노드와 비교, 확인이 되어야 하는데
+    /** [한번 해보기]while 문 작성 실패.... <- 한 방향으로만 힙을 만듬. 중간 노드 에서 바꾸어 줬을때 그 노드를 루트노드로 다시 아래노드와 비교, 확인이 되어야 하는데
      * 그 부분에서 재귀가 들어가야됨. while을 따로 함수로 만들어 빼도 결국은 하위 부분을 다시 확인해야 하기 때문에 while부분을 재귀 돌려야 함. **/
     public static int[] whileHeap(int[] arr){
-        //
         for (int i = arr.length-1; i > 0  ; i--) { // 맨 마지막 idx 부터 확인하기
             int myIdx = i; //i는 변동 X
             if(myIdx%2==0){ // idx가 짝수일때

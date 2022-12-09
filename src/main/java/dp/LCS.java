@@ -1,13 +1,20 @@
 package dp;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.Arrays;
 
 public class LCS {
 
-    public static void main(String[] args) {
-        String str = "ABCDCBA";
-        String str2 = "DCABDC";
-        solution(str, str2);
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+
+//        String str = "ABCDCBA";
+//        String str2 = "DCABDC";
+        String str = br.readLine();
+        String str2 = br.readLine();
+        System.out.println(solution(str, str2));
     }
 
     public static void printMatrix(int[][] arr, int num, int num2) {
@@ -18,6 +25,16 @@ public class LCS {
             System.out.println();
         }
     }
+    public static int max(int[][] arr, int num, int num2) {
+        int max = 0;
+        for (int i = 0; i < num; i++) {
+            for (int j = 0; j < num2; j++) {
+                if(max<arr[i][j])max = arr[i][j];
+            }
+        }
+        return max;
+    }
+
 
     public static int solution(String str, String str2) {
 
@@ -31,22 +48,18 @@ public class LCS {
 
         for (int i = 1; i < str2.length() + 1; i++) { //  수업대로 배열 표현하기위해선 DCABDC를 바깥 루프로 행으로서 표현해야함
             for (int j = 1; j < str.length() + 1; j++) {
-                if (str.charAt(j-1) == str2.charAt(i-1)) 
+                if (str.charAt(j-1) == str2.charAt(i-1))
                     arr[i][j] = arr[i - 1][j - 1] + 1;
                 else {
                     arr[i][j] = Math.max(arr[i - 1][j], arr[i][j - 1]);
                 }
 
             }
-            System.out.println();
         }
 
-        printMatrix(arr, str2.length() + 1, str.length() + 1);
+//        printMatrix(arr, str2.length() + 1, str.length() + 1);
 
-
-        System.out.println(Arrays.toString(arr));
-
-        return 3;
+        return max(arr,str2.length()+1,str.length()+1);
     }
 
 }
